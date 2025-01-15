@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<div class="text-center mb-4">
+  <h1>Selamat Datang, {{ username }}!</h1>
+  <p class="text-muted">Ini adalah dashboard Anda.</p>
+</div>
+
+<div class="card">
+  <div class="card-header bg-info text-white">
+    <h5>Posting Teks Baru</h5>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      <div class="mb-3">
+        <textarea
+          class="form-control"
+          name="text_content"
+          rows="3"
+          placeholder="Tulis sesuatu..."
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-info">Post</button>
+    </form>
+  </div>
+</div>
+
+<hr />
+
+<div class="mt-4">
+  <h4>Postingan Anda</h4>
+  {% if texts %}
+  <ul class="list-group">
+    {% for text in texts %}
+    <li class="list-group-item">
+      <p>{{ text.text_content }}</p>
+      <small class="text-muted">Dibuat pada: {{ text.created_at }}</small>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="text-muted">Belum ada postingan.</p>
+  {% endif %}
+</div>
+{% endblock %}

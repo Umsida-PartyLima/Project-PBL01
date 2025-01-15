@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %}
+<!-- Main Content -->
+<div class="col-md-9">
+  <div class="container my-5">
+    <h1 class="text-center">Welcome, Admin</h1>
+
+    <!-- Tabel Data Pengguna -->
+    <div class="user-table my-4">
+      <h2>Data Pengguna</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user['id'] }}</td>
+            <td>{{ user['username'] }}</td>
+            <td>{{ user['email'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tabel Data Postingan -->
+    <div class="post-table my-4">
+      <h2>Data Postingan</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Content</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+          <tr>
+            <td>{{ post['username'] }}</td>
+            <td>{{ post['text_content'] }}</td>
+            <td>{{ post['created_at'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

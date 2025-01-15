@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - {{ username }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='../static/profile.css') }}"
+    />
+  </head>
+  <body>
+    <div class="profile-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1>Profile: {{ username }}</h1>
+
+        <div class="posts-section">
+          <h2>Your Posts</h2>
+          {% if posts %}
+          <ul>
+            {% for post in posts %}
+            <li>
+              <div class="post-item">
+                <time>{{ post['created_at'] }}</time>
+                <p>{{ post['text_content'] }}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>You have not posted anything yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
